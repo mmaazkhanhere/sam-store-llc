@@ -123,7 +123,7 @@ export default function Footer() {
       </div>
       {/*Icons End */}
       {/*Copyright */}
-      <div className="flex text-center items-center justify-center">
+      <div className="flex text-center items-center justify-center mt-6">
         <BiCopyright /> Sam Store, Inc. All Rights Reserved
       </div>
       {/*Copyright end */}

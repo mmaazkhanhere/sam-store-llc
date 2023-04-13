@@ -1,11 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
+  const [show, setShow] = useState("translate-y-0");
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlNavbar = () => {
+    console.log("scrollY", window.scrollY);
+    console.log("lastScrollY", lastScrollY);
+    if (window.scrollY > 200) {
+      if (window.scrollY > lastScrollY) {
+        setShow("-translate-y-[80px] ");
+      } else {
+        setShow("shadow-sm");
+      }
+    } else {
+      setShow("translate-y-0");
+    }
+    setLastScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    console.log("useEffect", lastScrollY);
+    window.addEventListener("scroll", controlNavbar);
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, [lastScrollY]);
   return (
-    <header>
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between shadow-md ">
+    <header
+      className={`w-full md:h-[80px] z-20 sticky top-0 bg-white shadow-md transition-transform duration-300 ${show}`}
+    >
+      <div
+        className={`mx-auto flex max-w-[1400px] items-center justify-between `}
+      >
         <Image
           src="/Sam_Store.png"
           alt=""
