@@ -1,3 +1,5 @@
+import Footer from "@/Components/Footer";
+import Header from "@/Components/Header";
 import "@/styles/globals.css";
 import Head from "next/head";
 
@@ -14,13 +16,16 @@ export default function App({ Component, pageProps }) {
         {/*The above tag specifies how the web page should be displayed on different devices with varying screensize
         -The viewport tag tells the browser to adjust the page layout to fit the width of the device screen.
         - Inital-scale attribute sets the intial zoom level of hte web page which here is default(no zoom in or out) */}
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
           href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Playfair+Display+SC&display=swap"
           rel="stylesheet"
         />
+        <Header />
         <Component {...pageProps} />
+        <Footer />
       </Head>
     </>
   );

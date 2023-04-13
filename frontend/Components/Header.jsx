@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -61,7 +61,7 @@ export default function Header() {
                 />
               </svg>
             </div>
-            <div className="absolute top-0 right-0 w-full opacity-0 transition-all duration-300 group-focus:right-0 group-focus:opacity-100">
+            <div className="absolute border top-20 bg-white right-0 w-full opacity-0 transition-all duration-300 group-focus:right-0 group-focus:opacity-100">
               {/*Absolute: sets the element to position absolute within its container
                 top-0: positions the top of the element at the top of its container
                 -right-full: with this the menu comes from the right and closes by moving towards the right
@@ -71,7 +71,7 @@ export default function Header() {
                 group-focus: opacity-100: when the parent element is in focus, sets the opacity of the element to 100, making it visible
                 transition all duration -300: adds a transisiton effect to the elements when menu is displayed and removed*/}
 
-              <ul className="flex w-full cursor-pointer flex-col pt-24">
+              <ul className="flex w-full cursor-pointer flex-col">
                 <li className="border-b border-b-slate-300 py-3">
                   <Link href="">Home Appliances</Link>
                 </li>
