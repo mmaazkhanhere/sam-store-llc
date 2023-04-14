@@ -7,12 +7,15 @@ import Image from "next/image";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { BiArrowBack } from "react-icons/bi";
+import { BsGlobeAmericas } from "react-icons/bs";
+import { MdDiscount, MdOutlineStorefront } from "react-icons/md";
+import { RiSecurePaymentLine } from "react-icons/ri";
 
 export default function App() {
   return (
-    <div className="h-[2000px]">
+    <div>
       <HeroBanner />
-
+      {/*Carousel */}
       <div className="relative text-white w-full max-w-[1300px] mx-auto ">
         <Carousel
           autoPlay={true}
@@ -24,7 +27,7 @@ export default function App() {
           renderArrowPrev={(clickHandler, hasPrev) => (
             <div
               onClick={clickHandler}
-              className="absolute md:right-[60px] right-[35px] bottom-0  w-[30px] md:w-[50px] h-[30px] md:h-[50px] bg-black flex items-center justify-center cursor-pointer
+              className="absolute md:right-[60px] right-[35px] bottom-1 md:bottom-5 w-[30px] md:w-[50px] h-[30px] md:h-[50px] bg-black flex items-center justify-center cursor-pointer
               hover:opacity-90 z-20"
             >
               <BiArrowBack className="text-sm md:text-lg" />
@@ -36,7 +39,7 @@ export default function App() {
           renderArrowNext={(clickHandler, hasNext) => (
             <div
               onClick={clickHandler}
-              className="absolute right-0 bottom-0 w-[30px] md:w-[50px] h-[30px] md:h-[50px] bg-black flex items-center
+              className="absolute right-0  bottom-1 md:bottom-5 w-[30px] md:w-[50px] h-[30px] md:h-[50px] bg-black flex items-center
             justify-center cursor-pointer hover:opacity-90"
             >
               <BiArrowBack className="text-sm md:text-lg rotate-180" />
@@ -110,6 +113,63 @@ export default function App() {
             </div>
           </div>
         </Carousel>
+      </div>
+      {/*Carousel End */}
+      {/*Features Start */}
+      <div className=" grid md:flex pt-[30px] md:pt-[50px] p-6 md:p-10 justify-center items-center">
+        {/*Features End */}
+        <div className="flex flex-col items-center justify-center  max-w-sm p-6 md:p-10">
+          <BsGlobeAmericas className="text-3xl md:text-4xl" />
+          <h1 className="font-bold text-lg md:text-xl pt-2 md:pt-6">
+            Worldwide Shipping
+          </h1>
+          <p className="pt-0 md:pt-6 text-center text-[14px] md:text-[18px]">
+            Get your order delivered to your doorstep, anywhere in the world
+          </p>
+        </div>
+        {/*2 feature */}
+        <div className="flex flex-col items-center justify-center  max-w-sm p-6 md:p-10">
+          <MdOutlineStorefront className="text-3xl md:text-4xl" />
+          <h1 className="font-bold text-lg md:text-xl pt-0 md:pt-6">
+            In-store Pickup
+          </h1>
+          <p className="pt-0 md:pt-6 text-center text-[14px] md:text-[18px]">
+            Shop online, pick up in-store today
+          </p>
+        </div>
+        {/*3 feature */}
+        <div className="flex flex-col items-center justify-center  max-w-sm p-6 md:p-10">
+          <MdDiscount className="text-3xl md:text-4xl" />
+          <h1 className="font-bold text-lg md:text-xl pt-0 md:pt-6">
+            Best Offers
+          </h1>
+          <p className="pt-0 md:pt-6 text-center text-[14px] md:text-[18px]">
+            Amazing Deals: Save Big with Our Discounts!
+          </p>
+        </div>
+        {/*4 feature */}
+        <div className="flex flex-col items-center justify-center  max-w-sm p-6 md:p-10">
+          <RiSecurePaymentLine className="text-3xl md:text-4xl" />
+          <h1 className="font-bold text-lg md:text-xl pt-0 md:pt-6">
+            Secure Payments
+          </h1>
+          <p className="pt-0 md:pt-6 text-center text-[14px] md:text-[18px]">
+            Securely Pay for Your Purchases with Ease
+          </p>
+        </div>
+      </div>
+      {/*features end */}
+      {/*Discount PAge */}
+      <div class="relative h-96 hide-scroll-bar overflow-x-auto scroll-snap-type-x mandatory scroll-snap-align-start">
+        <div class="absolute w-full h-full">
+          <img src="/shopping.jpg" class="inline-block scroll-snap-stop" />
+        </div>
+        <div class="absolute inset-0 flex items-center justify-end">
+          <div class="py-4 px-8 bg-black opacity-75 text-white">
+            <h2 class="text-3xl font-bold">30% off on all items</h2>
+            <p class="text-xl">Use code DISCOUNT30 at checkout</p>
+          </div>
+        </div>
       </div>
     </div>
   );

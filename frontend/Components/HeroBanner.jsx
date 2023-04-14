@@ -12,7 +12,10 @@ export default function HeroBanner() {
         </div>
       </div>
       <div>
-        <h1 className="text-black font-bold text-center text-[12px] md:text-[38px] leading-tight font-quickSand  p-8 md:p-32">
+        <h1
+          className="text-black font-bold text-center text-[20px] md:text-[38px]  max-w-[1400px] mx-auto leading-tight 
+        font-quickSand p-6 md:p-40"
+        >
           Discover Your Signature Look: Shop Our Exclusive Collection and Step
           Up Your Style Game Today
         </h1>
