@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-          href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Playfair+Display+SC&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Playfair+Display&family=Quicksand:wght@300&display=swap"
           rel="stylesheet"
         />
       </Head>

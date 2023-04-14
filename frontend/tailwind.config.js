@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     fontFamily: {
       merriweather: "Merriweather, serif",
-      playfair: "'Playfair Display SC', serif",
+      playfair: "'Playfair Display', serif",
+      quickSand: "'Quicksand, sans-serif",
     },
     extend: {
       backgroundImage: {
