@@ -120,7 +120,7 @@ export default function App() {
       {/*Discount section */}
       <div
         class="bg-shopping flex h-[500px] items-center justify-start bg-cover bg-fixed bg-no-repeat 
-      bg-center pt-[30px] md:pt-[50px]"
+      bg-center pt-[30px] md:pt-[50px] max-w-[1400px] mx-auto"
       >
         <div class="inset-0 flex items-center justify-end pl-8">
           <div class="py-4 px-8 bg-black  opacity-75 text-white">

@@ -1,3 +1,4 @@
+import RelatedProductsCarousel from "@/Components/RelatedProductsCarousel";
 import React from "react";
 
 export default function Product() {
@@ -5,7 +6,7 @@ export default function Product() {
     <div>
       <section class="mx-auto max-w-[1200px]">
         <div class="flex flex-col gap-[50px] md:px-10 lg:flex-row lg:gap-[100px]">
-          <div class="sticky top-[50px] mx-auto w-full max-w-[500px] flex-[1.5] md:w-auto lg:mx-0 lg:max-w-full">
+          <div class="lg:sticky top-[50px] mx-auto w-full max-w-[500px] flex-[1.5] md:w-auto lg:mx-0 lg:max-w-full">
             <img
               src="https://www.efootwear.eu/media/catalog/product/cache/image/650x650/8/0/8059978380159_03_az.jpg"
               alt=""
@@ -52,6 +53,7 @@ export default function Product() {
             </div>
           </div>
         </div>
+        <RelatedProductsCarousel />
       </section>
     </div>
   );
