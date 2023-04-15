@@ -2,6 +2,7 @@
 
 import React from "react";
 import HeroBanner from "@/Components/HeroBanner";
+import Testimonial from "@/Components/Testimonial";
 import Image from "next/image";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -115,62 +116,67 @@ export default function App() {
         </Carousel>
       </div>
       {/*Carousel End */}
+
+      {/*Discount section */}
+      <div
+        class="bg-shopping flex h-[500px] items-center justify-start bg-cover bg-fixed bg-no-repeat 
+      bg-center pt-[30px] md:pt-[50px]"
+      >
+        <div class="inset-0 flex items-center justify-end pl-8">
+          <div class="py-4 px-8 bg-black  opacity-75 text-white">
+            <h2 class="text-4xl font-bold">30% off on all items</h2>
+            <p class="text-xl">Use code SAMSTORE23 at checkout</p>
+          </div>
+        </div>
+      </div>
+      {/*Discount section End */}
+
       {/*Features Start */}
       <div className=" grid md:flex pt-[30px] md:pt-[50px] p-6 md:p-10 justify-center items-center">
         {/*Features End */}
         <div className="flex flex-col items-center justify-center  max-w-sm p-6 md:p-10">
           <BsGlobeAmericas className="text-3xl md:text-4xl" />
-          <h1 className="font-bold text-lg md:text-xl pt-2 md:pt-6">
+          <h1 className="font-bold font-playfair text-lg md:text-xl pt-2 md:pt-6 font-">
             Worldwide Shipping
           </h1>
-          <p className="pt-0 md:pt-6 text-center text-[14px] md:text-[18px]">
+          <p className="pt-0 md:pt-6 text-center font-quickSand text-[14px] md:text-[18px]">
             Get your order delivered to your doorstep, anywhere in the world
           </p>
         </div>
         {/*2 feature */}
         <div className="flex flex-col items-center justify-center  max-w-sm p-6 md:p-10">
           <MdOutlineStorefront className="text-3xl md:text-4xl" />
-          <h1 className="font-bold text-lg md:text-xl pt-0 md:pt-6">
+          <h1 className="font-bold font-playfair text-lg md:text-xl pt-0 md:pt-6">
             In-store Pickup
           </h1>
-          <p className="pt-0 md:pt-6 text-center text-[14px] md:text-[18px]">
+          <p className="pt-0 md:pt-6 text-center font-quickSand text-[14px] md:text-[18px]">
             Shop online, pick up in-store today
           </p>
         </div>
         {/*3 feature */}
         <div className="flex flex-col items-center justify-center  max-w-sm p-6 md:p-10">
           <MdDiscount className="text-3xl md:text-4xl" />
-          <h1 className="font-bold text-lg md:text-xl pt-0 md:pt-6">
+          <h1 className="font-bold font-playfair text-lg md:text-xl pt-0 md:pt-6">
             Best Offers
           </h1>
-          <p className="pt-0 md:pt-6 text-center text-[14px] md:text-[18px]">
+          <p className="pt-0 md:pt-6 text-center font-quickSand text-[14px] md:text-[18px]">
             Amazing Deals: Save Big with Our Discounts!
           </p>
         </div>
         {/*4 feature */}
         <div className="flex flex-col items-center justify-center  max-w-sm p-6 md:p-10">
           <RiSecurePaymentLine className="text-3xl md:text-4xl" />
-          <h1 className="font-bold text-lg md:text-xl pt-0 md:pt-6">
+          <h1 className="font-bold font-playfair text-lg md:text-xl pt-0 md:pt-6">
             Secure Payments
           </h1>
-          <p className="pt-0 md:pt-6 text-center text-[14px] md:text-[18px]">
+          <p className="pt-0 md:pt-6 text-center font-quickSand text-[14px] md:text-[18px]">
             Securely Pay for Your Purchases with Ease
           </p>
         </div>
       </div>
       {/*features end */}
-      {/*Discount PAge */}
-      <div class="relative h-96 hide-scroll-bar overflow-x-auto scroll-snap-type-x mandatory scroll-snap-align-start">
-        <div class="absolute w-full h-full">
-          <img src="/shopping.jpg" class="inline-block scroll-snap-stop" />
-        </div>
-        <div class="absolute inset-0 flex items-center justify-end">
-          <div class="py-4 px-8 bg-black opacity-75 text-white">
-            <h2 class="text-3xl font-bold">30% off on all items</h2>
-            <p class="text-xl">Use code DISCOUNT30 at checkout</p>
-          </div>
-        </div>
-      </div>
+      {/*Testimonial */}
+      <Testimonial />
     </div>
   );
 }

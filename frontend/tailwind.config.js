@@ -13,9 +13,8 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        shopping:
+          'url("https://images.pexels.com/photos/3865930/pexels-photo-3865930.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
       },
     },
   },
