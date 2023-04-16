@@ -1,4 +1,6 @@
 import CartItem from "@/Components/CartItem";
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function cart() {
@@ -51,6 +53,29 @@ export default function cart() {
           {/*Right Box ends */}
         </div>
         {/*Checkout Detail Ends */}
+        {/*Empty Cart Page */}
+        <div className="flex-[2] flex flex-col items-center pb-[50px] md:mt-14">
+          <Image
+            src={"/empty_cart.png"}
+            width={700}
+            height={700}
+            alt="empty cart"
+            className="w-[500px] md:w-[700px]"
+          />
+          <span className="text-xl font-bold">
+            Looks like this cart is on a diet, it's empty!
+          </span>
+          <span className="text-center mt-4">
+            Go ahead and explore our products
+          </span>
+          <Link
+            href={"/"}
+            className="py-4 px-8 rounded-full bg-black text-white text-lg font-medium transition-transform
+          active:scale-95 mb-3 hover:opacity-75 mt-8"
+          >
+            Continue Shopping
+          </Link>
+        </div>
       </section>
     </div>
   );
