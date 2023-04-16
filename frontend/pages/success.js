@@ -15,10 +15,10 @@ export default function success() {
             For any product related query, drop an email to
           </div>
           <Link
-            href="mailto:example@email.com"
+            href="mailto:contact@samstorellc.com"
             className="underline cursor-pointer hover:font-bold"
           >
-            samstore@gmail.com
+            contact@samstorellc.com
           </Link>
 
           <Link href="/" className="font-bold mt-5">
