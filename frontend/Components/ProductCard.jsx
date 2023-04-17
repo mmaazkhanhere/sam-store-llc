@@ -1,22 +1,37 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { getDiscountedPricePercetange } from "@/utils/helper";
 
-export default function ProductCard() {
+export default function ProductCard({ data: { attributes: p, id } }) {
   return (
     <Link
-      href={"/product/1"}
-      className="transform overflow-hidden duration-200 hover:scale-105 cursor-pointer"
+      href={`/product/${p.slug}`}
+      className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer"
     >
-      <Image width={500} height={500} alt="Women Bag" src={"/product_1.jpg"} />
-      <div className="p-4 text-black/[0.9]">
-        <h2 className="text-lg font-medium">Umbro Kaixi Handbag</h2>
-        <div className="flex items-center justify-center">
-          <p className="mr-2 text-lg font-semibold">$ 45.99</p>
-          <p className="line-through font-medium text-sm">$ 50.00</p>
-          <p className="ml-auto text-base font-medium text-green-500">
-            12% off
-          </p>
+      {/*transform can be used to rotate, scale, or translate elements
+        overfollow-hidden sets the element to hide any content that overflow its boundaries, which can be useful when working with element
+        that have fixed sizes
+        */}
+      <Image
+        width={500}
+        height={500}
+        src={p.thumbnail.data.attributes.url}
+        alt={p.name}
+      />
+      <div className=" mt-6 mb-[5 0px] text-black/[0.9]">
+        <h2 className="text-[16px] font-medium">{p.name}</h2>
+        <div className="flex items-center text-black/[0.8]">
+          <p className="mr-2 mt-4 text-[16px] font-semibold">{`$ ${p.price}`}</p>
+
+          {p.original_price && (
+            <>
+              <p className="text-[12px] mt-4 font-medium text-black/[0.5] line-through">{`$ ${p.original_price}`}</p>
+              <p className="ml-auto text-base font-medium text-green-500">
+                {getDiscountedPricePercetange(p.original_price, p.price)} % off
+              </p>
+            </>
+          )}
         </div>
       </div>
     </Link>

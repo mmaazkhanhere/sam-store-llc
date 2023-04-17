@@ -7,8 +7,8 @@ export const fetchDataFromApi = async (endpoint) => {
       Authorization: "Bearer " + STRAPI_API_TOKEN, //an authorisation header containing Strapi token which is the token for the api
     },
   };
-
-  const res = await fetch(`$(API_URL)${endpoint}`, options);
+  console.log(options);
+  const res = await fetch(`${API_URL}${endpoint}`, options);
   const data = await res.json();
 
   return data;
