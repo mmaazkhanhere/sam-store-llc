@@ -19,15 +19,15 @@ export default function ProductCard({ data: { attributes: p, id } }) {
         src={p.thumbnail.data.attributes.url}
         alt={p.name}
       />
-      <div className=" mt-6 mb-[5 0px] text-black/[0.9]">
-        <h2 className="text-[16px] font-medium">{p.name}</h2>
+      <div className=" mt-6 mb-[50px] text-black/[0.9]">
+        <h2 className="text-[16px] font-medium font-playfair">{p.name}</h2>
         <div className="flex items-center text-black/[0.8]">
-          <p className="mr-2 mt-4 text-[16px] font-semibold">{`$ ${p.price}`}</p>
+          <p className="mr-2 mt-4 text-[20px] font-semibold font-quickSand">{`$ ${p.price}`}</p>
 
           {p.original_price && (
             <>
-              <p className="text-[12px] mt-4 font-medium text-black/[0.5] line-through">{`$ ${p.original_price}`}</p>
-              <p className="ml-auto text-base font-medium text-green-500">
+              <p className="text-[12px] mt-4 font-medium text-black/[0.5] line-through font-quickSand">{`$ ${p.original_price}`}</p>
+              <p className="ml-auto text-base font-medium text-green-500 font-quickSand">
                 {getDiscountedPricePercetange(p.original_price, p.price)} % off
               </p>
             </>

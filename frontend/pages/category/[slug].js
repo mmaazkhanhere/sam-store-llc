@@ -1,10 +1,28 @@
 import ProductCard from "@/Components/ProductCard";
 import { fetchDataFromApi } from "@/utils/api";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import useSWR from "swr";
+import { useRouter } from "next/router";
+import Image from "next/image";
 
 const maxResult = 3;
 
 export default function HomeAppliance({ category, products, slug }) {
+  const [pageIndex, setPageIndex] = useState(1);
+  const { query } = useRouter();
+
+  useEffect(() => {
+    setPageIndex(1);
+  }, [query]);
+
+  const { data, error, isLoading } = useSWR(
+    `/api/products?populate=*&[filters][categories][slug][$eq]=${slug}&pagination[page]=${pageIndex}&pagination[pageSize]=${maxResult}`,
+    fetchDataFromApi,
+    {
+      fallbackData: products,
+    }
+  );
+
   return (
     <div className="w-full md:py-20 relative">
       {/*Whole Section */}
@@ -13,12 +31,54 @@ export default function HomeAppliance({ category, products, slug }) {
         <div className="text-[32px] md:text-[44px] mb-10 font-semibold leading-tight font-playfair">
           {category?.data?.[0]?.attributes?.name}
         </div>
-
+        {/*Product Grid Starts */}
         <div className="grid grid-cols-1 md:grid-cols-2 mt-[60px] md:mt-[90px] lg:grid-cols-3 gap-[100px] my-14 px-5 md:px-0">
-          {products?.data?.map((product) => (
+          {data?.data?.map((product) => (
             <ProductCard key={product?.id} data={product} />
           ))}
         </div>
+        {/*Product Grid Ends */}
+        {/*Pagination buttons */}
+        {data?.meta?.pagination?.total > maxResult && (
+          <div className="flex gap-3 items-center justify-center my-16 md:my-0">
+            <button
+              className="rounded py-2 px-4 bg-black text-white disbaled hover:bg-gray-200 disabled:text-gray-500"
+              disabled={pageIndex === 1}
+              onClick={() => setPageIndex(pageIndex - 1)}
+            >
+              Previous
+            </button>
+            {/*Page Number */}
+            <span className="font-bold">
+              {`${pageIndex} of ${data && data.meta.pagination.pageCount}`}
+            </span>
+
+            {/*Next Button */}
+            <button
+              className="rounded py-2 px-4 bg-black disabled:bg-gray-200 disabled:text-gray-500"
+              disabled={pageIndex === (data && data.meta.pagination.pageCount)}
+              onClick={() => setPageIndex(pageIndex + 1)}
+            >
+              Next
+            </button>
+          </div>
+        )}
+        {/*Pagination button ends */}
+
+        {
+          //Loading logo and spinner
+          isLoading && (
+            <div className="absolute top-0 left-0 w-full h-full bg-white/[0.5] flex flex-col gap-5 justify-center items-center">
+              <Image
+                src="/Loading.png"
+                width={150}
+                height={150}
+                alt="Sam Store Logo"
+              />
+              <span className="text-2xl font-medium">Loading...</span>
+            </div>
+          )
+        }
       </section>
     </div>
   );
@@ -52,7 +112,7 @@ export async function getStaticProps({ params: { slug } }) {
   );
   const products =
     await fetchDataFromApi(`/api/products?populate=*&[filters][categories][slug][$eq]=${slug}&
-  /api/products?populate=*&[filters][categories][slug][$eq]=${slug}`);
+  /api/products?populate=*&[filters][categories][slug][$eq]=${slug}&pagination[page1]=1&pagination[pageSize]=${maxResult}`);
 
   return {
     props: {
