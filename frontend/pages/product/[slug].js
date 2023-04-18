@@ -13,7 +13,7 @@ export default function Product({ product, products }) {
     <div>
       <section className="mx-auto max-w-[1200px] mb-[30px] md:mb-[50px]">
         <div className="flex flex-col gap-[50px] md:px-10 lg:flex-row lg:gap-[100px] mt-[50px]">
-          <div className="lg:sticky mx-auto w-full max-w-[500px] flex-[1.5] md:w-auto lg:mx-0 lg:max-w-full overflow-hidden">
+          <div className="lg:sticky mx-auto w-full max-w-[500px] flex-[1.5] md:w-auto lg:mx-0 lg:max-w-full">
             <Image
               src={p.thumbnail.data.attributes.url}
               width={700}

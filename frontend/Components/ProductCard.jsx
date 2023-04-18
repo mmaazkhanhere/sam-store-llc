@@ -7,7 +7,7 @@ export default function ProductCard({ data: { attributes: p, id } }) {
   return (
     <Link
       href={`/product/${p.slug}`}
-      className="transform bg-white duration-200 hover:scale-105 cursor-pointer"
+      className="transform overflow-hidden bg-white transition duration-300 hover:scale-105 cursor-pointer"
     >
       {/*transform can be used to rotate, scale, or translate elements
         overfollow-hidden sets the element to hide any content that overflow its boundaries, which can be useful when working with element
