@@ -9,6 +9,7 @@ import { Toast } from "@chakra-ui/react";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -45,12 +46,16 @@ export default function Product({ product, products }) {
           </div>
 
           <div className="flex-[1] py-3 p-4 mt-[5px]">
-            <div className="mb-2 text-[26px] md:text-[34px] font-semibold leading-tight">
+            <div className="mb-2 text-[26px] md:text-[34px] font-playfair font-semibold leading-tight">
               {p.name}
             </div>
-            <div className="mb-5 text-lg font-semibold">{p.subtitle}</div>
+            <div className="mb-5 text-lg font-semibold font-playfair ">
+              {p.subtitle}
+            </div>
             <div className="flex items-center justify-center">
-              <p className="mr-2 text-lg font-semibold">$ {p.price}</p>
+              <p className="mr-2 text-lg font-playfair font-semibold">
+                $ {p.price}
+              </p>
               {p.original_price && (
                 <>
                   <p className="text-sm font-medium line-through">
@@ -74,7 +79,7 @@ export default function Product({ product, products }) {
                 dispatch(
                   addToCart({
                     ...product?.data?.[0],
-                    onQuantityPrice: p.price,
+                    oneQuantityPrice: p.price,
                   })
                 );
                 notify();
@@ -93,12 +98,14 @@ export default function Product({ product, products }) {
             <div>
               <div className="mb-5 text-lg font-bold">Product Details</div>
               <div className="markdown text-mb mb-5 text-justify">
-                {p.description}
+                <ReactMarkdown className="m-[20px] list-disc">
+                  {p.description}
+                </ReactMarkdown>
               </div>
             </div>
           </div>
         </div>
-        {/* <RelatedProductsCarousel /> */}
+        <RelatedProductsCarousel products={products} />
       </section>
     </div>
   );

@@ -124,8 +124,12 @@ export default function App() {
       >
         <div class="inset-0 flex items-center justify-end pl-8">
           <div class="py-4 px-8 bg-black  opacity-75 text-white">
-            <h2 class="text-4xl font-bold">30% off on all items</h2>
-            <p class="text-xl">Use code SAMSTORE23 at checkout</p>
+            <h2 class="text-3xl md:text-4xl font-bold font-playfair">
+              30% off on all items
+            </h2>
+            <p class="text-md md:text-xl font-quickSand">
+              Use code SAMSTORE23 at checkout
+            </p>
           </div>
         </div>
       </div>

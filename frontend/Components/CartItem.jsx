@@ -53,17 +53,10 @@ export default function CartItem({ data }) {
               {/*Quantity selectoin */}
               <div className="font-semibold font-quickSand">Quantity:</div>
               <select
-                name=""
-                id=""
                 className="hover:text-black"
-                onChange={(e) =>
-                  updateCartItem(e, "quantity")
-                } /*an onChange event listener is added to the select element, which calls the updateCartItem function and passes the event object
-                and a akey argument of quantity, which tells the function to update the quantity value in the 'data' object with the selected value from dropdown*/
+                onChange={(e) => updateCartItem(e, "quantity")}
               >
                 {Array.from({ length: 10 }, (_, i) => i + 1).map((q, i) => {
-                  /*am array of 10 elements, each representing a quantity is created. The  map funciton is used to iterate over each
-                element in the array, and for each element a 'kry' and 'value' are generated for the corresponding o[tion element in the select dropdown*/
                   return (
                     <option key={i} value={q} selected={data.quantity === q}>
                       {q}

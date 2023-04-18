@@ -3,20 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useMemo, useState } from "react"; //caching a value so that it doesnt need to be recalculated
 import { useSelector } from "react-redux";
+
 export default function Cart() {
   const [loading, setLoading] = useState(false);
 
   const { cartItems } = useSelector((state) => state.cart);
 
   const subTotal = useMemo(() => {
-    /*useMemo takes two arguments" a function that returns a value and an array of dependencies. The function will be only re-executed when one of the
-   dependencies changes*/
-
-    return cartItems.reduce(
-      (total, val) => total + val.attributes.price,
-      0
-    ); /*second argument is the intial value of the total which is set to '0'. The useMemo hook returns a calculated
-      subtotal value, which will be only re-calculated if the cartItems array changes*/
+    return cartItems.reduce((total, val) => total + val.attributes.price, 0);
   }, [cartItems]);
 
   return (
@@ -87,15 +81,15 @@ export default function Cart() {
               alt="empty cart"
               className="w-[500px] md:w-[700px]"
             />
-            <span className="text-xl font-bold">
+            <span className="text-xl md:text-3xl text-center font-bold">
               Looks like this cart is on a diet, it's empty!
             </span>
-            <span className="text-center mt-4">
+            <span className="text-center text-[16px] md:text-[20px] mt-4">
               Go ahead and explore our products
             </span>
             <Link
               href={"/"}
-              className="py-4 px-8 rounded-full bg-black text-white text-lg font-medium transition-transform
+              className="py-2 md:py-4 px-4 md:px-8 rounded-full bg-black text-white text-md md:text-xl font-medium transition-transform
           active:scale-95 mb-3 hover:opacity-75 mt-8"
             >
               Continue Shopping

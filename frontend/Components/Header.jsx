@@ -36,18 +36,20 @@ export default function Header() {
       <div
         className={`mx-auto flex max-w-[1400px] items-center justify-between `}
       >
-        <Image
-          src="/Sam_Store.png"
-          alt=""
-          width={100}
-          height={100}
-          className="ml-6 scale-125"
-        />
+        <Link href={"/"}>
+          <Image
+            src="/Sam_Store.png"
+            alt=""
+            width={100}
+            height={100}
+            className="ml-6 scale-125"
+          />
+        </Link>
         <div className="flex">
           <div className="hidden md:flex gap-12 font-merriweather">
-            <Link href="/homeAppliance">Home Appliance</Link>
-            <Link href="/Women">Women</Link>
-            <Link href="/Men">Men</Link>
+            <Link href="/category/home-appliances">Home Appliance</Link>
+            <Link href="/category/women">Women</Link>
+            <Link href="/category/men">Men</Link>
             <Link href="/contact">Contact Us</Link>
           </div>
           {/*Icons Start */}
@@ -89,9 +91,11 @@ export default function Header() {
                   />
                 </svg>
               </div>
-              <div className="absolute bottom-3 left-5 flex min-w-[18px] items-center justify-center rounded-full bg-red-600 text-[10px] text-white md:min-w-[20px] md:text-[14px]">
-                {cartItems.length}
-              </div>
+              {cartItems.length > 0 && (
+                <div className="absolute bottom-3 left-5 flex min-w-[18px] items-center justify-center rounded-full bg-red-600 text-[10px] text-white md:min-w-[20px] md:text-[14px]">
+                  {cartItems.length}
+                </div>
+              )}
             </Link>
           </div>
           <button className="group mr-4 flex md:mr-0 md:hidden">
@@ -123,16 +127,18 @@ export default function Header() {
 
               <ul className="flex w-full cursor-pointer flex-col">
                 <li className="border-b border-b-slate-300 py-3">
-                  <Link href="">Home Appliances</Link>
+                  <Link href={"/category/home-appliances"}>
+                    Home Appliances
+                  </Link>
                 </li>
                 <li className="border-b border-b-slate-300 py-2">
-                  <Link href="">Women</Link>
+                  <Link href={"/category/women"}>Women</Link>
                 </li>
                 <li className="border-b border-b-slate-300 py-2">
-                  <Link href="">Men</Link>
+                  <Link href={"/category/men"}>Men</Link>
                 </li>
                 <li className="border-b border-b-slate-300 py-2">
-                  <Link href="">Contact Us</Link>
+                  <Link href={"/category/contact"}>Contact Us</Link>
                 </li>
               </ul>
             </div>

@@ -17,6 +17,7 @@ export default function ProductCard({ data: { attributes: p, id } }) {
         width={500}
         height={500}
         src={p.thumbnail.data.attributes.url}
+        layout="responsive"
         alt={p.name}
       />
       <div className=" mt-6 mb-[50px] text-black/[0.9]">

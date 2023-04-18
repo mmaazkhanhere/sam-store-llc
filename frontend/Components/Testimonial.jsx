@@ -13,7 +13,7 @@ export default function Testimonial() {
         className="flex flex-col items-center justify-center max-w-[800px] mx-auto pt-[30px] md:pt-[50px]
       "
       >
-        <h1 className="text-4xl underline font-bold font-playfair">
+        <h1 className=" text-2xl md:text-4xl underline font-bold font-playfair">
           Customer Feedback
         </h1>
         <p className="text-md font-medium text-center md:mt-6 mt-2">
@@ -22,7 +22,7 @@ export default function Testimonial() {
           to get it right
         </p>
       </div>
-      <div className=" max-w-[700px] mx-auto mt-2 md:mt-6 bg-slate-200 rounded-lg ">
+      <div className=" max-w-[700px] mx-auto mt-6 bg-slate-200 rounded-lg ">
         <Swiper
           modules={[Navigation, Pagination, A11y, Autoplay]}
           slidesPerView={1}
@@ -43,7 +43,7 @@ export default function Testimonial() {
                 alt="People"
                 className="rounded-full object-cover"
               />
-              <p className="text-[15px] text-justify md:mt-10 mt-5 text-black/[0.7] font-quickSand">
+              <p className="text-[15px] text-justify md:mt-10 mt-6 text-black/[0.7] font-quickSand">
                 I recently purchased a product from Sam Store and I couldn't be
                 happier with my experience. The website was easy to navigate and
                 find what I was looking for. The checkout process was quick and
@@ -68,7 +68,7 @@ export default function Testimonial() {
                 alt="People"
                 className="rounded-full object-cover"
               />
-              <p className="text-[15px] text-justify md:mt-10 mt-5 text-black/[0.7] font-quickSand">
+              <p className="text-[15px] text-justify md:mt-10 mt-6 text-black/[0.7] font-quickSand">
                 I recently purchased a pair of shoes from Sam Store and I
                 couldn't be happier with my experience. The checkout process was
                 quick and easy, and my order arrived right on time. The shoes
@@ -93,7 +93,7 @@ export default function Testimonial() {
                 alt="People"
                 className="rounded-full object-cover"
               />
-              <p className="text-[15px] text-justify md:mt-10 mt-5 text-black/[0.7] font-quickSand">
+              <p className="text-[15px] text-justify md:mt-10 mt-6 text-black/[0.7] font-quickSand">
                 I am happy to share my positive experience with Sam Store. From
                 start to finish, my shopping experience was fantastic. The
                 website was easy to navigate, and I found exactly what I was
