@@ -42,7 +42,7 @@ export default function HomeAppliance({ category, products, slug }) {
         {data?.meta?.pagination?.total > maxResult && (
           <div className="flex gap-3 items-center justify-center my-16 md:my-0">
             <button
-              className="rounded py-2 px-4 bg-black text-white disbaled hover:bg-gray-200 disabled:text-gray-500"
+              className="rounded py-2 px-4 bg-black text-white disabled:bg-gray-200 disabled:text-gray-500"
               disabled={pageIndex === 1}
               onClick={() => setPageIndex(pageIndex - 1)}
             >
@@ -55,7 +55,7 @@ export default function HomeAppliance({ category, products, slug }) {
 
             {/*Next Button */}
             <button
-              className="rounded py-2 px-4 bg-black disabled:bg-gray-200 disabled:text-gray-500"
+              className="rounded py-2 px-4 bg-black text-white disabled:bg-gray-200 disabled:text-gray-500"
               disabled={pageIndex === (data && data.meta.pagination.pageCount)}
               onClick={() => setPageIndex(pageIndex + 1)}
             >
