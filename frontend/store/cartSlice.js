@@ -1,5 +1,3 @@
-// copied from https://react-redux.js.org/tutorials/quick-start
-
 import { createSlice } from "@reduxjs/toolkit";
 
 export const cartSlice = createSlice({
@@ -19,9 +17,9 @@ export const cartSlice = createSlice({
     },
     updateCart: (state, action) => {
       state.cartItems = state.cartItems.map((p) => {
-        if (p.id === action.payload.id) {
+        if (p.id === action.payload) {
           if (action.payload.key === "quantity") {
-            p.attributes.price = p.oneQuantityPrice * action.payload.val;
+            p.attributes.price == p.oneQuantityPrice * action.payload.val;
           }
           return { ...p, [action.payload.key]: action.payload.val };
         }

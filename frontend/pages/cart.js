@@ -5,10 +5,18 @@ import React, { useMemo, useState } from "react"; //caching a value so that it d
 import { useSelector } from "react-redux";
 export default function Cart() {
   const [loading, setLoading] = useState(false);
+
   const { cartItems } = useSelector((state) => state.cart);
 
-  const subtTotal = useMemo(() => {
-    return cartItems.reduce((total, val) => total + val.attributes.price, 0);
+  const subTotal = useMemo(() => {
+    /*useMemo takes two arguments" a function that returns a value and an array of dependencies. The function will be only re-executed when one of the
+   dependencies changes*/
+
+    return cartItems.reduce(
+      (total, val) => total + val.attributes.price,
+      0
+    ); /*second argument is the intial value of the total which is set to '0'. The useMemo hook returns a calculated
+      subtotal value, which will be only re-calculated if the cartItems array changes*/
   }, [cartItems]);
 
   return (
@@ -44,7 +52,7 @@ export default function Cart() {
                       Subtotal
                     </div>
                     <div className="text-md font-medium text-black md:text-lg font-playfair">
-                      $ {subtTotal}
+                      $ {subTotal}
                     </div>
                   </div>
                   {/*Description */}

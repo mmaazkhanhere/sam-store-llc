@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { IoMdHeartEmpty } from "react-icons/io";
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const [show, setShow] = useState("translate-y-0");
   const [lastScrollY, setLastScrollY] = useState(0);
 
+  const { cartItems } = useSelector((state) => state.cart);
+
   const controlNavbar = () => {
-    console.log("scrollY", window.scrollY);
-    console.log("lastScrollY", lastScrollY);
     if (window.scrollY > 200) {
       if (window.scrollY > lastScrollY) {
         setShow("-translate-y-[80px] ");
@@ -23,7 +24,6 @@ export default function Header() {
   };
 
   useEffect(() => {
-    console.log("useEffect", lastScrollY);
     window.addEventListener("scroll", controlNavbar);
     return () => {
       window.removeEventListener("scroll", controlNavbar);
@@ -90,7 +90,7 @@ export default function Header() {
                 </svg>
               </div>
               <div className="absolute bottom-3 left-5 flex min-w-[18px] items-center justify-center rounded-full bg-red-600 text-[10px] text-white md:min-w-[20px] md:text-[14px]">
-                10
+                {cartItems.length}
               </div>
             </Link>
           </div>

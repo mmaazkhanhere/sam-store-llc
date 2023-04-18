@@ -1,17 +1,38 @@
 import RelatedProductsCarousel from "@/Components/RelatedProductsCarousel";
-import { fetchDataFromApi } from "@/utils/api";
-import { getDiscountedPricePercetange } from "@/utils/helper";
 import Image from "next/image";
 import React, { useState } from "react";
+
+import { addToCart } from "@/store/cartSlice";
+import { fetchDataFromApi } from "@/utils/api";
+import { getDiscountedPricePercetange } from "@/utils/helper";
+import { Toast } from "@chakra-ui/react";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Product({ product, products }) {
   const p = product?.data?.[0]?.attributes;
   const dispatch = useDispatch();
+  const notify = () => {
+    toast.success(
+      "Item Added! Your credit card is feeling loved and accepted",
+      {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      }
+    );
+  };
   return (
     <div>
       <section className="mx-auto max-w-[1200px] mb-[30px] md:mb-[50px]">
+        <ToastContainer />
         <div className="flex flex-col gap-[50px] md:px-10 lg:flex-row lg:gap-[100px] mt-[50px]">
           <div className="lg:sticky mx-auto w-full max-w-[500px] flex-[1.5] md:w-auto lg:mx-0 lg:max-w-full">
             <Image
@@ -19,12 +40,12 @@ export default function Product({ product, products }) {
               width={700}
               height={700}
               alt={p.name}
-              className="hover:scale-150 "
+              className="lg:hover:scale-150 "
             />
           </div>
 
-          <div className="flex-[1] py-3">
-            <div className="mb-2 text-[34px] font-semibold leading-tight">
+          <div className="flex-[1] py-3 p-4 mt-[5px]">
+            <div className="mb-2 text-[26px] md:text-[34px] font-semibold leading-tight">
               {p.name}
             </div>
             <div className="mb-5 text-lg font-semibold">{p.subtitle}</div>
@@ -47,7 +68,18 @@ export default function Product({ product, products }) {
               incl. of taxes
             </div>
             <div className="text-md mb-20 font-medium text-black/[0.5]">{`(Also includes all applicable duties)`}</div>
-            <button className="w-full rounded-full border bg-black py-4 text-lg font-medium text-white transition-transform hover:opacity-75 active:scale-95">
+            <button
+              className="w-full rounded-full border bg-black py-4 text-lg font-medium text-white transition-transform hover:opacity-75 active:scale-95"
+              onClick={() => {
+                dispatch(
+                  addToCart({
+                    ...product?.data?.[0],
+                    onQuantityPrice: p.price,
+                  })
+                );
+                notify();
+              }}
+            >
               Add To Cart
             </button>
             <button

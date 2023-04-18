@@ -10,13 +10,8 @@ export default function CartItem({ data }) {
 
   const updateCartItem = (e, key) => {
     let payload = {
-      /*A payload object is created containing the new valye of the property 'val', the 'id' of the cart item being updated, and the name of the property being updated */
       key,
-      val:
-        key === "quantity"
-          ? parseInt(e.target.value)
-          : e.target
-              .value /*If the property is qyantity, the value is parsed as an integer using 'parseInt' */,
+      val: key === "quantity" ? parseInt(e.target.value) : e.target.value,
       id: data.id,
     };
     dispatch(updateCart(payload));
@@ -61,11 +56,16 @@ export default function CartItem({ data }) {
                 name=""
                 id=""
                 className="hover:text-black"
-                onChange={(e) => updateCartItem(e, quantity)}
+                onChange={(e) =>
+                  updateCartItem(e, "quantity")
+                } /*an onChange event listener is added to the select element, which calls the updateCartItem function and passes the event object
+                and a akey argument of quantity, which tells the function to update the quantity value in the 'data' object with the selected value from dropdown*/
               >
                 {Array.from({ length: 10 }, (_, i) => i + 1).map((q, i) => {
+                  /*am array of 10 elements, each representing a quantity is created. The  map funciton is used to iterate over each
+                element in the array, and for each element a 'kry' and 'value' are generated for the corresponding o[tion element in the select dropdown*/
                   return (
-                    <option key={i} value={q} selected={data.quantity === 1}>
+                    <option key={i} value={q} selected={data.quantity === q}>
                       {q}
                     </option>
                   );
