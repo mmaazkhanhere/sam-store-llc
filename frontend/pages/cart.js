@@ -1,17 +1,36 @@
 import CartItem from "@/Components/CartItem";
+import { makePaymentRequest } from "@/utils/api";
+import { loadStripe } from "@stripe/stripe-js";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useMemo, useState } from "react"; //caching a value so that it doesnt need to be recalculated
 import { useSelector } from "react-redux";
 
+const stripePromise = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+
 export default function Cart() {
   const [loading, setLoading] = useState(false);
-
   const { cartItems } = useSelector((state) => state.cart);
 
   const subTotal = useMemo(() => {
     return cartItems.reduce((total, val) => total + val.attributes.price, 0);
   }, [cartItems]);
+
+  const handlePayment = async () => {
+    try {
+      setLoading(true);
+      const stripe = await stripePromise;
+      const res = await makePaymentRequest("/api/orders", {
+        products: cartItems,
+      });
+      await stripe.redirectToCheckout({
+        sessionId: res.stripeSession.id,
+      });
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
 
   return (
     <div className="w-fill md:py-20">
@@ -60,10 +79,11 @@ export default function Cart() {
                 {/*Summary Box Ends */}
                 {/*Checkout Button */}
                 <button
-                  className="w-full py-4 font-playfair rounded-full bg-black text-white text-lg font-medium transition-transform active:sacle-95 mb-3 hover:opacity-75 
-            flex items-center gap-2 justify-center"
+                  className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75 flex items-center gap-2 justify-center"
+                  onClick={handlePayment}
                 >
                   Checkout
+                  {loading && <img src="/Loading.png" />}
                 </button>
               </div>
               {/*Right Box ends */}
