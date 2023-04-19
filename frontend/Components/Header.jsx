@@ -66,7 +66,7 @@ export default function Header() {
                 className="absolute bottom-3 md:bottom-4 left-4 md:left-6 flex min-w-[18px] items-center 
               justify-center rounded-full bg-red-600 text-[10px] text-white md:min-w-[20px] md:text-[14px]"
               >
-                15
+                0
               </div>
             </Link>
             {/*Cart Icon */}

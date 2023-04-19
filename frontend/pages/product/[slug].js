@@ -1,13 +1,12 @@
 import RelatedProductsCarousel from "@/Components/RelatedProductsCarousel";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 
 import { addToCart } from "@/store/cartSlice";
 import { fetchDataFromApi } from "@/utils/api";
 import { getDiscountedPricePercetange } from "@/utils/helper";
-import { Toast } from "@chakra-ui/react";
 import { IoMdHeartEmpty } from "react-icons/io";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
@@ -18,7 +17,7 @@ export default function Product({ product, products }) {
   const dispatch = useDispatch();
   const notify = () => {
     toast.success(
-      "Item Added! Your credit card is feeling loved and accepted",
+      "Item added! Your credit card is feeling loved and accepted",
       {
         position: "bottom-right",
         autoClose: 3000,

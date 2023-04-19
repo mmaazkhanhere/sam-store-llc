@@ -6,7 +6,9 @@ import Link from "next/link";
 import React, { useMemo, useState } from "react"; //caching a value so that it doesnt need to be recalculated
 import { useSelector } from "react-redux";
 
-const stripePromise = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+);
 
 export default function Cart() {
   const [loading, setLoading] = useState(false);
@@ -83,7 +85,7 @@ export default function Cart() {
                   onClick={handlePayment}
                 >
                   Checkout
-                  {loading && <img src="/Loading.png" />}
+                  {loading && <img src="/spinner.svg" alt="Loading" />}
                 </button>
               </div>
               {/*Right Box ends */}
