@@ -3,10 +3,12 @@ import Image from "next/image";
 import React from "react";
 
 import { addToCart } from "@/store/cartSlice";
+import { addToList } from "@/store/wishList";
+
 import { fetchDataFromApi } from "@/utils/api";
 import { getDiscountedPricePercetange } from "@/utils/helper";
 import { IoMdHeartEmpty } from "react-icons/io";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
@@ -15,6 +17,8 @@ import "react-toastify/dist/ReactToastify.css";
 export default function Product({ product, products }) {
   const p = product?.data?.[0]?.attributes;
   const dispatch = useDispatch();
+  const { listItems } = useSelector((state) => state.wishlist);
+
   const notify = () => {
     toast.success(
       "Item added! Your credit card is feeling loved and accepted",
@@ -29,6 +33,22 @@ export default function Product({ product, products }) {
       }
     );
   };
+
+  const message = () => {
+    toast.success(
+      "You just made our day! Your Wishlist just got a little bit longer",
+      {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      }
+    );
+  };
+
   return (
     <div>
       <section className="mx-auto max-w-[1200px] mb-[30px] md:mb-[50px]">
@@ -90,6 +110,14 @@ export default function Product({ product, products }) {
               className="w-full py-4 rounded-full border border-black text-lg 
                     font-medium hover:bg-red-600 hover:text-white transition-transform active:scale-95 flex items-center justify-center 
                     gap-2 mb-10 hover:opacity-75"
+              onClick={() => {
+                dispatch(
+                  addToList({
+                    ...product?.data?.[0],
+                  })
+                );
+                message();
+              }}
             >
               Whishlist
               <IoMdHeartEmpty size={20} />

@@ -9,6 +9,7 @@ export default function Header() {
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const { cartItems } = useSelector((state) => state.cart);
+  const { listItems } = useSelector((state) => state.wishlist);
 
   const controlNavbar = () => {
     if (window.scrollY > 200) {
@@ -62,12 +63,14 @@ export default function Header() {
               <div className="flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
                 <IoMdHeartEmpty className="text-[20px] md:text-[26px]" />
               </div>
-              <div
-                className="absolute bottom-3 md:bottom-4 left-4 md:left-6 flex min-w-[18px] items-center 
+              {listItems.length > 0 && (
+                <div
+                  className="absolute bottom-3 md:bottom-4 left-4 md:left-6 flex min-w-[18px] items-center 
               justify-center rounded-full bg-red-600 text-[10px] text-white md:min-w-[20px] md:text-[14px]"
-              >
-                0
-              </div>
+                >
+                  {listItems.length}
+                </div>
+              )}
             </Link>
             {/*Cart Icon */}
             <Link
