@@ -56,7 +56,7 @@ export default function Header() {
           <div className="flex items-center gap-2">
             {/*Wishlist*/}
             <Link
-              href="/cart"
+              href="/wishlist"
               className="relative flex cursor-pointer items-center justify-center gap-1 rounded-full ml-0 md:ml-10 "
             >
               <div className="flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">

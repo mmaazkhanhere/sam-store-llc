@@ -48,7 +48,7 @@ export default function CartItem({ data }) {
         </div>
         {/*Quantity Selectoin */}
         <div className="mt-4 flex items-center justify-between">
-          <div className="itens-center md:text-md flex gap-2 text-sm text-black/[0.5] md:gap-10">
+          <div className="items-center md:text-md flex gap-2 text-sm text-black/[0.5] md:gap-10">
             <div className="flex items-center gap-1">
               {/*Quantity selectoin */}
               <div className="font-semibold font-quickSand">Quantity:</div>

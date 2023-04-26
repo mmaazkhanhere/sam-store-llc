@@ -35,7 +35,7 @@ export default function Cart() {
   };
 
   return (
-    <div className="w-fill md:py-20">
+    <div className="w-full md:py-20">
       <section className="mx-auto max-w-[1200px]">
         {cartItems.length > 0 && (
           <>
