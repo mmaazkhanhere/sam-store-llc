@@ -119,15 +119,15 @@ export default function App() {
 
       {/*Discount section */}
       <div
-        class="bg-shopping flex h-[500px] items-center justify-start bg-cover bg-fixed bg-no-repeat 
+        className="bg-shopping flex h-[500px] items-center justify-start bg-cover bg-fixed bg-no-repeat 
       bg-center pt-[30px] md:pt-[50px] max-w-[1400px] mx-auto"
       >
-        <div class="inset-0 flex items-center justify-end pl-8">
-          <div class="py-4 px-8 bg-black  opacity-75 text-white">
-            <h2 class="text-3xl md:text-4xl font-bold font-playfair">
+        <div className="inset-0 flex items-center justify-end pl-8">
+          <div className="py-4 px-8 bg-black  opacity-75 text-white">
+            <h2 className="text-3xl md:text-4xl font-bold font-playfair">
               30% off on all items
             </h2>
-            <p class="text-md md:text-xl font-quickSand">
+            <p className="text-md md:text-xl font-quickSand">
               Use code SAMSTORE23 at checkout
             </p>
           </div>
