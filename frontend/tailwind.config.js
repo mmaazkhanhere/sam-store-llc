@@ -6,6 +6,13 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      sm: "350px",
+      md: "650px",
+      lg: "1024px",
+      xl: "1440px",
+      xxl: "2560px",
+    },
     fontFamily: {
       merriweather: "Merriweather, serif",
       playfair: "'Playfair Display', serif",

@@ -2,20 +2,22 @@ import React from "react";
 
 export default function Contact() {
   return (
-    <section class="mx-auto h-[800px] max-w-[1400px]">
-      <div class="bg-contact mx-auto flex h-[500px] max-w-[1400px] items-center justify-center bg-cover bg-fixed bg-center bg-no-repeat pt-[30px] md:pt-[50px]">
-        <div class="inset-0 flex items-center justify-center border border-black">
-          <div class="bg-white px-8 py-4 text-center text-black opacity-75">
-            <h2 class="text-3xl font-bold md:text-4xl">Get in Touch</h2>
-            <p class="text-md font-quickSand md:text-xl">
+    <section className="mx-auto h-[900px] max-w-[1400px]">
+      <div className="bg-contact mx-auto flex h-[500px] max-w-[1400px] items-center justify-center bg-cover bg-fixed bg-center bg-no-repeat pt-[30px] sm:h-[400px] md:pt-[50px]">
+        <div className="inset-0 flex items-center justify-center ">
+          <div className="bg-white text-center text-black opacity-75 md:px-4 md:py-2 lg:px-8 lg:py-4">
+            <h2 className="sm:text-[25px] md:text-[30px] font-bold lg:text-[40px]">
+              Get in Touch
+            </h2>
+            <p className="font-quickSand sm:text-[14px] md:text-[17px] lg:mt-3 lg:text-[20px]">
               Want to get in touch? We would like to hear from you. Here's how
               you can reach us!
             </p>
           </div>
         </div>
       </div>
-      <div class="absolute flex w-[1400px] items-center justify-around">
-        <div class="-mt-12 flex max-w-[500px] flex-col items-center justify-center border border-black bg-white p-8">
+      <div className="absolute mx-auto flex items-center sm:justify-between md:justify-around  sm:w-[410px] md:w-[690px] lg:w-[1400px]">
+        <div className="-mt-12 flex sm:h-[320px] sm:w-[200px] flex-col items-center justify-center border border-black bg-white sm:p-4 p-8 md:w-[300px] md:h-[340px] lg:w-[500px]">
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +25,7 @@ export default function Contact() {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="h-14 w-14"
+              className="sm:h-8 sm:w-8 md:h-11 md:w-11 lg:h-14 lg:w-14"
             >
               <path
                 stroke-linecap="round"
@@ -32,24 +34,24 @@ export default function Contact() {
               />
             </svg>
           </div>
-          <div class="flex flex-col items-center justify-center">
-            <h1 class="mt-4 text-[22px] font-bold">
+          <div className="flex flex-col items-center justify-center">
+            <h1 className="mt-4 text-center sm:text-[16px] font-bold md:text-[19px] lg:text-[22px]">
               Talk to Our Representative
             </h1>
-            <p class="mt-4 text-center text-[16px]">
+            <p className="mt-4 text-center sm:text-[13px] md:text-[15px] lg:text-[16px]">
               Pickup your phone and connect with our represetative to provide
               valuable feedback to imporve our customer experience
             </p>
             <a
               href="tel:+1234567890"
-              class="mt-4 text-[18px] font-medium text-blue-600 underline hover:font-bold"
+              className="mt-4 sm:text-[14px] md:text-[16px] font-medium text-blue-600 underline hover:font-bold lg:text-[18px]"
             >
               +1 234 567 890
             </a>
           </div>
         </div>
 
-        <div class="-mt-12 flex max-w-[500px] flex-col items-center justify-center border border-black bg-white p-8">
+        <div className="-mt-12 flex sm:h-[320px] sm:w-[200px] flex-col items-center justify-center border border-black bg-white sm:p-4 lg:p-8 lg:w-[500px] md:w-[300px] md:h-[340px]">
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +59,7 @@ export default function Contact() {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="h-14 w-14"
+              className="sm:h-8 sm:w-8 md:h-11 md:w-11 lg:h-14 lg:w-14"
             >
               <path
                 stroke-linecap="round"
@@ -66,16 +68,18 @@ export default function Contact() {
               />
             </svg>
           </div>
-          <div class="flex flex-col items-center justify-center">
-            <h1 class="mt-4 text-[22px] font-bold">Email Us</h1>
-            <p class="mt-4 text-center text-[16px]">
+          <div className="flex flex-col items-center justify-center">
+            <h1 className="mt-4 text-center sm:text-[16px] font-bold md:text-[19px] lg:text-[22px]">
+              Email Us
+            </h1>
+            <p className="mt-4 text-center sm:text-[13px] md:text-[15px] lg:text-[16px]">
               Email us for product inquiries, refund, complaints, delievery
-              status, wholesale inquiries and valubale user experience
+              status, wholesale inquiries and valuable user experience
               information
             </p>
             <a
               href="mailto:contact@samstorellc.com"
-              class="mt-4 text-[18px] font-medium text-blue-600 underline hover:font-bold"
+              className="mt-4 sm:text-[14px] md:text-[16px] font-medium text-blue-600 underline hover:font-bold lg:text-[18px]"
             >
               contact@samstorellc.com
             </a>

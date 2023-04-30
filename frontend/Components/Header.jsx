@@ -141,7 +141,7 @@ export default function Header() {
                   <Link href={"/category/men"}>Men</Link>
                 </li>
                 <li className="border-b border-b-slate-300 py-2">
-                  <Link href={"/category/contact"}>Contact Us</Link>
+                  <Link href="/contact">Contact Us</Link>
                 </li>
               </ul>
             </div>
