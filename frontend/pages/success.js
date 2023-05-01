@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 export default function success() {
+  //this page will be displayed when the payment is successful
   return (
     <div className="min-h-[650px] flex items-center">
       <section className="max-w-[1400px] mx-auto">

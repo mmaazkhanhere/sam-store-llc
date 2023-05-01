@@ -21,10 +21,10 @@ export default function App() {
         <Carousel
           autoPlay={true}
           infiniteLoop={true}
-          showStatus={false}
-          autoFocus={true}
+          showStatus={false} //the status indicator for the carousel is turned off
+          autoFocus={true} //enables the focus on the carousel component, which means that it can be navigated with keyboard
           showThumbs={true}
-          showIndicators={false}
+          showIndicators={false} //turns of the indicators for the carousel
           renderArrowPrev={(clickHandler, hasPrev) => (
             <div
               onClick={clickHandler}

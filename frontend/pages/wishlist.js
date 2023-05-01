@@ -5,11 +5,15 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 
 export default function Wishlist() {
-  const { listItems } = useSelector((state) => state.wishlist);
+  const { listItems } = useSelector(
+    (state) => state.wishlist
+  ); /*A React Redux hook that allows you to extact data from the global
+  Redux store. 'state' argument represents the current state of Redux store.
+  listItems is destructured to extract the 'listItems' property from the wishlist slice of the Redux store */
   return (
     <div className="w-full md:py-20">
       <section className="max-w-[1400px] mx-auto">
-        {listItems.length > 0 && (
+        {listItems.length > 0 && ( //if any items are present in the wishlist, it will be displayed
           <>
             <div
               className="mx-auto mt-8 max-w-[800px] text-center md:mt-0 mb-5 text-[28px] font-playfair font-semibold 
@@ -31,7 +35,7 @@ export default function Wishlist() {
           </>
         )}{" "}
         {/*Empty Wishlist Message */}
-        {listItems.length < 1 && (
+        {listItems.length < 1 && ( //if no items are present in the wishlist, the following content will be displayed
           <div className="flex-[2] flex flex-col items-center pb-[50px] md:mt-14">
             <Image
               src={"/empty-wishlist.png"}

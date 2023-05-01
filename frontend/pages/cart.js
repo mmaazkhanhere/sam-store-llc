@@ -7,29 +7,46 @@ import React, { useMemo, useState } from "react"; //caching a value so that it d
 import { useSelector } from "react-redux";
 
 const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-);
+  process.env
+    .NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY /*'process.env' object is a global variable in Node.js that contains the user
+  environment.
+  NEXT_PUBLIC is a Next.js convention that makes the variable available in client-side code */
+); //function from the Stripe library to asynchronously load the Stripe.js script and create a stripe instance and returns a promise that resolves to a stripe object
 
 export default function Cart() {
-  const [loading, setLoading] = useState(false);
-  const { cartItems } = useSelector((state) => state.cart);
+  const [loading, setLoading] =
+    useState(
+      false
+    ); /*initialises a 'loading' state variable to false and a 'setLoading' function to set
+  update the value of loading variable */
+  const { cartItems } = useSelector(
+    (state) => state.cart
+  ); /*useSelector is a hook that allows you to extract data from the Redux store
+  state. Here, 'cartItems' property from the 'cart' slice is selected */
 
   const subTotal = useMemo(() => {
-    return cartItems.reduce((total, val) => total + val.attributes.price, 0);
-  }, [cartItems]);
+    return cartItems.reduce(
+      (total, val) => total + val.attributes.price,
+      0
+    ); /*uses the reduce method to sum up the 'price' attribute of each
+    item in the cartItems array. Reduce function takes two arguments
+    - First argument is a function that accumulates the total value
+    - Second argument is the intial value of the total value */
+  }, [cartItems]); //uses the useMemo hook from React to memoize the result of a calculation based on the 'cartItems' array
 
   const handlePayment = async () => {
     try {
-      setLoading(true);
-      const stripe = await stripePromise;
+      setLoading(true); //sets the loading state to true indicating that the payment is being processed
+      const stripe = await stripePromise; //uses stripePromise object to intialise the Stripe API client
       const res = await makePaymentRequest("/api/orders", {
-        products: cartItems,
+        products: cartItems, //sends a request to the server to create a new order with the list of products in the shopping cart
       });
       await stripe.redirectToCheckout({
+        /*Redirects the user to Stripe checkout page, passing the sessionId of the Stripe session. */
         sessionId: res.stripeSession.id,
       });
     } catch (error) {
-      setLoading(false);
+      setLoading(false); //sets the loading state back to 'false' after the payment request has been processed
       console.log(error);
     }
   };
@@ -50,9 +67,18 @@ export default function Cart() {
                 <div className="text-lg font-bold font-playfair">
                   Cart Items
                 </div>
-                {cartItems.map((item) => (
-                  <CartItem key={item.id} data={item} />
-                ))}
+                {cartItems.map(
+                  (
+                    item /*uses map function to iterate over each item in the 'cartItems' array and perform an operation on each item */
+                  ) => (
+                    <CartItem
+                      key={item.id}
+                      data={item}
+                    /> /*for each item, a CartItem component is rendered with two props
+                  - key prop is passed to CartItem to identify each item uniquely
+                  - data prop is passed with data for the item that is being rendered */
+                  )
+                )}
               </div>
               {/*Left Side Box End */}
               {/*Right Box */}
@@ -82,10 +108,11 @@ export default function Cart() {
                 {/*Checkout Button */}
                 <button
                   className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75 flex items-center gap-2 justify-center"
-                  onClick={handlePayment}
+                  onClick={handlePayment} //when clicked on, handlePayment method is called to process the payment procedure
                 >
                   Checkout
-                  {loading && <img src="/spinner.svg" alt="Loading" />}
+                  {loading && <Image src={"/spinner.svg"} alt="Loading" />}{" "}
+                  {/*If loading is true, the Image component will be displayed showing the loading spinner Image  */}
                 </button>
               </div>
               {/*Right Box ends */}
@@ -94,7 +121,7 @@ export default function Cart() {
         )}
         {/*Checkout Detail Ends */}
         {/*Empty Cart Page */}
-        {cartItems.length < 1 && (
+        {cartItems.length < 1 && ( //if no items are present in the cart, the following code will run
           <div className="flex-[2] flex flex-col items-center pb-[50px] md:mt-14">
             <Image
               src={"/empty_cart.png"}
