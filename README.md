@@ -1,4 +1,6 @@
 Sam Store Website
+
+
 It is an ecommerce store website created using NextJs, React, JavaScript, Redux, Stripe, Strapi, and TailwindCSS.
 - NextJS as a React framework for the website
 - React for various components, icons, states and functionalities
