@@ -43,10 +43,10 @@ export default function Contact() {
               valuable feedback to imporve our customer experience
             </p>
             <a
-              href="tel:+1234567890"
+              href="tel:+12543314648"
               className="mt-4 sm:text-[14px] md:text-[16px] font-medium text-blue-600 underline hover:font-bold lg:text-[18px]"
             >
-              +1 234 567 890
+              +1 254 331 4648
             </a>
           </div>
         </div>
