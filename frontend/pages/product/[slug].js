@@ -15,26 +15,30 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Product({ product, products }) {
-  const p = product?.data?.[0]?.attributes;
-  const dispatch = useDispatch();
+  const p = product?.data?.[0]?.attributes; //all product attributes is assigned to the variable 'p'
+  const dispatch =
+    useDispatch(); /* initialize the dispatch constant variable so that the component can dispatch actions to update the Redux store's 
+  state when needed. */
   const { listItems } = useSelector((state) => state.wishlist);
 
   const notify = () => {
+    //notifies the user that the item is added to the cart
     toast.success(
       "Item added! Your credit card is feeling loved and accepted",
       {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
+        position: "bottom-right", //displayed at the bottom right corner of the screen
+        autoClose: 3000, //auto closes after 3 secs
+        hideProgressBar: false, // specifies whether to show a progress bar for the notification.
+        closeOnClick: true, //closes when clicked on
+        draggable: true, //specifies whether the notification can be dragged around the screen.
+        progress: undefined, //specifies whether the notification can be dragged around the screen.
+        theme: "dark", //specifies the theme of the notification message
       }
     );
   };
 
   const message = () => {
+    //notifies the user that item is added to the wishlist
     toast.success(
       "You just made our day! Your Wishlist just got a little bit longer",
       {
@@ -75,7 +79,7 @@ export default function Product({ product, products }) {
               <p className="mr-2 text-lg font-playfair font-semibold">
                 $ {p.price}
               </p>
-              {p.original_price && (
+              {p.original_price && ( //displays the percentage discount offered
                 <>
                   <p className="text-sm font-medium line-through">
                     $ {p.original_price}
@@ -96,12 +100,14 @@ export default function Product({ product, products }) {
               className="w-full rounded-full border bg-black py-4 text-lg font-medium text-white transition-transform hover:opacity-75 active:scale-95"
               onClick={() => {
                 dispatch(
+                  /*when clicked on, it dispatches an action to add product to the shopping cart by calling the dispatch function from
+                React-Redux library */
                   addToCart({
-                    ...product?.data?.[0],
-                    oneQuantityPrice: p.price,
+                    ...product?.data?.[0], //object is created by spreading the properties of the first element in the array
+                    oneQuantityPrice: p.price, //a new property is created with the value of product price
                   })
                 );
-                notify();
+                notify(); //when clicked on, success message is displayed
               }}
             >
               Add To Cart
@@ -113,7 +119,9 @@ export default function Product({ product, products }) {
               onClick={() => {
                 dispatch(
                   addToList({
-                    ...product?.data?.[0],
+                    /*when clicked on, it dispatches an action to add product to the wishlist by calling the dispatch function from
+                  React-Redux library */
+                    ...product?.data?.[0], //an object is created by spreading the properties of the first element in tharray
                   })
                 );
                 message();
@@ -139,16 +147,19 @@ export default function Product({ product, products }) {
 }
 
 export async function getStaticPaths() {
-  //used to generate a list of valid paths for dynamic pages at build time
+  // exports an object with the properties necessary for Server-Side Rendering (SSR) in Next.js.
   const products = await fetchDataFromApi("/api/products?populate=*"); //getting all product data
   const paths = products?.data?.map((p) => ({
     //creates an array of object that contain paths parameter for the getStaticProps function
     params: {
+      /*each object has a 'params' property, which itself has a 'slug' property that contains the slug value for that
+    particular product */
       slug: p.attributes.slug,
     },
   }));
   return {
-    paths,
+    paths /*an array of objects containing the possible paths for dynamic pages. Each object has a 'params' property that contains
+    a slug value for the product*/,
     fallback: false, // any request for a path that is not in the 'paths' array will result a 404 error
   };
 }
