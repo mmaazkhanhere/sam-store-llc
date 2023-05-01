@@ -5,26 +5,47 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { useSelector } from "react-redux";
 
 export default function Header() {
-  const [show, setShow] = useState("translate-y-0");
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [show, setShow] =
+    useState(
+      "translate-y-0"
+    ); /*sets up the 'show' state variable and a corresponding function 'setShow' that can be used to update 
+  its value. The initial value is set to 'translate-y-0' that will move the component vertically by 0 pixels */
 
-  const { cartItems } = useSelector((state) => state.cart);
-  const { listItems } = useSelector((state) => state.wishlist);
+  const [lastScrollY, setLastScrollY] =
+    useState(
+      0
+    ); /*sets 'lastScrollY' state variable and an corresponding 'setLastScrollY' function, which can be 
+  used to update its value*/
+
+  const { cartItems } = useSelector(
+    (state) => state.cart
+  ); /*Extracts cartItems object from the 'cart' slice of the Redux store by passing a callback function
+  to the useSelector hook, which takes in the entire state object and returns only the 'cartItems' object */
+  const { listItems } = useSelector(
+    (state) => state.wishlist
+  ); /*extracts listItems object from the 'wishlist' slice of the Redux store by passing a callback function
+  to the useSelector that takes in the entire state object and returns only the listItems object */
 
   const controlNavbar = () => {
+    // a function that controls the behavior of a navigation bar. The navbar will appear whenever user scroll upwards
     if (window.scrollY > 200) {
+      //first it checks whether the user has scrolled down more than 200px
       if (window.scrollY > lastScrollY) {
-        setShow("-translate-y-[80px] ");
+        //then it checks if the scroll direction is up or down by comparing the present scroll position with previous
+        setShow("-translate-y-[80px] "); //if the scroll direction is down, the navbar will translate upward 80px thus hiding it
       } else {
-        setShow("shadow-sm");
+        setShow("shadow-sm"); // if the scroll direction is upwards, the navabr is shown with small shadow
       }
     } else {
+      //if the user has scroll less than 200px, it shows the header by setting 'show' to 'translate-y-0'
       setShow("translate-y-0");
     }
-    setLastScrollY(window.scrollY);
+    setLastScrollY(window.scrollY); //it updates the lastscroll to the current scroll position
   };
 
   useEffect(() => {
+    /*sets up a side effect that adds and remove an event listener for the scroll event on the window object.EventListener are Javascript's procedure
+  that waits for the occurence of an event */
     window.addEventListener("scroll", controlNavbar);
     return () => {
       window.removeEventListener("scroll", controlNavbar);
@@ -45,8 +66,11 @@ export default function Header() {
             height={100}
             className="ml-6 scale-125"
           />
-        </Link>
+        </Link>{" "}
+        {/*Logo of the store which will take to the home page when clicked upon */}
         <div className="flex">
+          {" "}
+          {/*Menu Options */}
           <div className="hidden md:flex gap-12 font-merriweather">
             <Link href="/category/home-appliances">Home Appliance</Link>
             <Link href="/category/women">Women</Link>
@@ -63,12 +87,13 @@ export default function Header() {
               <div className="flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
                 <IoMdHeartEmpty className="text-[20px] md:text-[26px]" />
               </div>
-              {listItems.length > 0 && (
+              {listItems.length > 0 && ( //if any item is present in wishlist, the following styles will be applied
                 <div
                   className="absolute bottom-3 md:bottom-4 left-4 md:left-6 flex min-w-[18px] items-center 
               justify-center rounded-full bg-red-600 text-[10px] text-white md:min-w-[20px] md:text-[14px]"
                 >
-                  {listItems.length}
+                  {listItems.length}{" "}
+                  {/*total number of cart items will be displayed */}
                 </div>
               )}
             </Link>
@@ -94,14 +119,17 @@ export default function Header() {
                   />
                 </svg>
               </div>
-              {cartItems.length > 0 && (
+              {cartItems.length > 0 && ( //if any item is present in the cart, the following styles will be applied
                 <div className="absolute bottom-3 left-5 flex min-w-[18px] items-center justify-center rounded-full bg-red-600 text-[10px] text-white md:min-w-[20px] md:text-[14px]">
-                  {cartItems.length}
+                  {cartItems.length}{" "}
+                  {/*Number of items present in the cart will be displayed */}
                 </div>
               )}
             </Link>
           </div>
           <button className="group mr-4 flex md:mr-0 md:hidden">
+            {" "}
+            {/*The following menu will be displayed for the mobile screen only */}
             <div className="flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-full hover:bg-slate-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -118,11 +146,10 @@ export default function Header() {
                 />
               </svg>
             </div>
-            <div className="absolute border top-20 bg-white right-0 w-full opacity-0 transition-all duration-300 group-focus:right-0 group-focus:opacity-100">
+            <div className="absolute top-20 bg-white right-0 w-full opacity-0 transition-all duration-300 group-focus:right-0 group-focus:opacity-100">
               {/*Absolute: sets the element to position absolute within its container
-                top-0: positions the top of the element at the top of its container
-                -right-full: with this the menu comes from the right and closes by moving towards the right
-                h-screen: sets the height of the element to height of the viewport
+                top-20 sets the top margin of the element to 20 units
+                right-0 positions the element at the rightmost edge of its container,
                 w-full: sets the width of the element to full of its container
                 group-focus: right-0 :  When the parent element is in the focus, moves the right edge of the element to the right edge of the container
                 group-focus: opacity-100: when the parent element is in focus, sets the opacity of the element to 100, making it visible

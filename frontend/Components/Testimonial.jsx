@@ -13,6 +13,8 @@ export default function Testimonial() {
         className="flex flex-col items-center justify-center max-w-[800px] mx-auto pt-[30px] md:pt-[50px]
       "
       >
+        {" "}
+        {/*Heading div */}
         <h1 className=" text-2xl md:text-4xl underline font-bold font-playfair">
           Customer Feedback
         </h1>
@@ -23,14 +25,29 @@ export default function Testimonial() {
         </p>
       </div>
       <div className=" max-w-[700px] mx-auto mt-6 bg-slate-200 rounded-lg ">
+        {" "}
+        {/*Carousel Div */}
         <Swiper
-          modules={[Navigation, Pagination, A11y, Autoplay]}
-          slidesPerView={1}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log("slide change")}
+          modules={[
+            Navigation,
+            Pagination,
+            A11y,
+            Autoplay,
+          ]} /*an array of additional swiper modules that provide extra
+          functionality to the swiper */
+          slidesPerView={1} //only one slide shown for view
+          onSwiper={(swiper) =>
+            console.log(swiper)
+          } /*a callback function that is executed when the swiper is intialised and 
+          returns the swiper instances */
+          onSlideChange={() =>
+            console.log("slide change")
+          } /*A callback function that is executed when the active slide in the
+          swiper changes */
           autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
+            //an object that contains the autoplay configuration options for the swiper.
+            delay: 2500, //specifies a delay of 2.5 sec before slide is changed
+            disableOnInteraction: false, //the autoplay will not be disabled when interacted with the swiper
           }}
         >
           {/*Slide 1 */}

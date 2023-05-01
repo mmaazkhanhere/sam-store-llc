@@ -5,8 +5,8 @@ import { removeFromList } from "@/store/wishList";
 import { useDispatch } from "react-redux";
 
 export default function WishListItem({ data }) {
-  const p = data.attributes;
-  const dispatch = useDispatch();
+  const p = data.attributes; //attributes of the products is assigned to variable 'p'
+  const dispatch = useDispatch(); //dispatch actions to update the Redux stores state when needed.
   return (
     <div className="flex py-5 gap-3 md:gap-5 border-b">
       {/*Image Starts */}
@@ -42,7 +42,7 @@ export default function WishListItem({ data }) {
           <div className="items-center md:text-md flex gap-2 text-sm text-black/[0.5] md:gap-10"></div>
           <RiDeleteBin6Line
             className="cursor-pointer text-black/[0.5] hover:text-black text-[16px]"
-            onClick={() => dispatch(removeFromList({ id: data.id }))}
+            onClick={() => dispatch(removeFromList({ id: data.id }))} //product of an id 'id' is removed when clicked on delete icon
           />
         </div>
       </div>

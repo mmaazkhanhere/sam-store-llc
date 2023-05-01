@@ -7,16 +7,23 @@ import { useDispatch } from "react-redux";
 export default function CartItem({ data }) {
   //data is recieved from api
   const p = data.attributes; //the attributes of the product is saved in p variable
-  const dispatch = useDispatch();
+  const dispatch =
+    useDispatch(); /*useDispatch hook of React-Redux library returns a reference to the Redux store's dispatch function, which allows
+  components to dispatch actions to update store's state*/
 
   const updateCartItem = (e, key) => {
     //method to update cart items when quantity of the product is changed
     let payload = {
-      key,
-      val: key === "quantity" ? parseInt(e.target.value) : e.target.value,
-      id: data.id,
+      key, //the value of key parameter that was passed into the function
+      val:
+        key === "quantity"
+          ? parseInt(e.target.value)
+          : e.target
+              .value /*because the quantity of a product is expected to be a number, so the ParseInt
+      method is used to convert a string to a number if necessary */,
+      id: data.id, //this is the id property of data object
     };
-    dispatch(updateCart(payload));
+    dispatch(updateCart(payload)); //dispatch function is used to send the object to a reducer to update the state of the cart
   };
   return (
     <div className="flex py-5 gap-3 md:gap-5 border-b">
@@ -63,11 +70,19 @@ export default function CartItem({ data }) {
                 className="hover:text-black"
                 onChange={(e) =>
                   updateCartItem(e, "quantity")
-                } /*when value is changed, updateCart item function is called*/
+                } /*when value is changed, updateCart item function is called with the new qunatity as 'val' property of the payload object and updateCartItem
+                function will be called to update the state of the shhopping cart*/
               >
                 {Array.from({ length: 10 }, (_, i) => i + 1).map((q, i) => {
+                  /*the first portion (before .map) creates an array with 10 elements where each
+                element is a number from 1 to 10. The length proerty specfies the length of array
+                .map applies a function to each element of the array and returns a new arry with the same length as original array.*/
                   return (
                     <option key={i} value={q} selected={data.quantity === q}>
+                      {" "}
+                      {/*the function passed to map creates an html option element for each number in 
+                    array. The key prop is set to the index of the element in the array. The 'value' prop is set to the number. The 'selected' prop is set to 'true'
+                    if the 'data.quantity' variable is equal to the current number */}
                       {q}
                     </option>
                   );
@@ -80,7 +95,9 @@ export default function CartItem({ data }) {
           {/*Delete Button */}
           <RiDeleteBin6Line
             className="cursor-pointer text-black/[0.5] hover:text-black text-[16px]"
-            onClick={() => dispatch(removeFromCart({ id: data.id }))}
+            onClick={() =>
+              dispatch(removeFromCart({ id: data.id }))
+            } /*an arrow function dispatches an action to remove an item from the cart with id of that product*/
           />
         </div>
       </div>
